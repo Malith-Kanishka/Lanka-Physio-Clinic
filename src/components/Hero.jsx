@@ -52,7 +52,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        
+
         {/* Right side is intentionally left empty (or minimal spacing) on desktop 
             to let the fixed scroll-driven nervous system canvas show through cleanly. */}
         <div className="hero-visual-placeholder"></div>

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Hand, Brain, Accessibility, Dumbbell, Heart, BriefcaseMedical } from 'lucide-react';
 
 export default function Services() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const images = ['/uploads/1.jpg', '/uploads/2.jpg', '/uploads/3.jpg', '/uploads/4.jpg', '/uploads/5.jpg'];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const services = [
     {
       icon: <Hand className="service-icon" />,
@@ -46,6 +56,17 @@ export default function Services() {
           </p>
         </div>
 
+        <div className="services-slideshow-container fade-in-delay-4">
+          {images.map((src, index) => (
+            <div
+              key={src}
+              className={`services-slide ${index === currentSlide ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+          <div className="services-slide-overlay"></div>
+        </div>
+
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="glass-panel service-card">
@@ -66,7 +87,7 @@ export default function Services() {
 
         .section-header {
           max-width: 600px;
-          margin-bottom: 60px;
+          margin-bottom: 40px;
         }
 
         .section-description {
@@ -75,12 +96,22 @@ export default function Services() {
           margin-top: 12px;
         }
 
+        .services-slideshow-container {
+          position: relative;
+          width: 100%;
+          height: 400px;
+          border-radius: 24px;
+          margin-bottom: 40px;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          border: 1px solid var(--glass-border);
+        }
+
         .services-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 24px;
-          max-width: 800px; /* limits width on desktop so the right-side canvas isn't covered */
-          z-index: 2;
+          width: 100%;
           position: relative;
         }
 
@@ -130,9 +161,39 @@ export default function Services() {
           color: var(--text-secondary);
         }
 
+        /* Slideshow sizing is above */
+
+        .services-slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          opacity: 0;
+          transform: scale(1.05);
+          transition: opacity 1.5s ease-in-out, transform 6s ease-out;
+        }
+
+        .services-slide.active {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        .services-slide-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(4,8,16,0.8), transparent 40%);
+          pointer-events: none;
+        }
+
         @media (max-width: 1024px) {
           .services-grid {
-            max-width: 100%;
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .services-slideshow-container {
+            height: 300px;
           }
         }
 
@@ -140,7 +201,9 @@ export default function Services() {
           .services-grid {
             grid-template-columns: 1fr;
           }
-          
+          .services-slideshow-container {
+            height: 250px;
+          }
           .service-card {
             padding: 24px;
           }
