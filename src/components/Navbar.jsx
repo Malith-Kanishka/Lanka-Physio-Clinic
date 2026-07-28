@@ -13,14 +13,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappLink = "https://wa.me/94771234567?text=Hello%20Lanka%20Physio%20Clinic%2C%20I%20would%20like%20to%20book%20a%20physiotherapy%20home%20visit.";
-
   return (
     <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
         <a href="#home" className="logo">
           <Activity className="logo-icon" />
-          <span className="logo-text">LANKA <span className="text-gradient">PHYSIO</span></span>
+          <span className="logo-text">LANKA <span className="text-gradient">PHYSIO CLINIC</span></span>
         </a>
 
         {/* Desktop Menu */}
@@ -29,7 +27,7 @@ export default function Navbar() {
           <a href="#services" className="nav-link">Services</a>
           <a href="#specializations" className="nav-link">Home Visits</a>
           <a href="#contact" className="nav-link">Contact</a>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp nav-cta">
+          <a href="#contact" className="btn btn-whatsapp nav-cta">
             <Phone size={16} />
             <span>Book Home Visit</span>
           </a>
@@ -53,9 +51,7 @@ export default function Navbar() {
           <a href="#specializations" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Home Visits</a>
           <a href="#contact" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
           <a 
-            href={whatsappLink} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="#contact" 
             className="btn btn-whatsapp mobile-cta"
             onClick={() => setIsMobileMenuOpen(false)}
           >

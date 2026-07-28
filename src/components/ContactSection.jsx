@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, Clock, MapPin, MessageSquare, Send } from 'lucide-react';
+import mapImage from '../../uploads/map.png';
 
 export default function ContactSection() {
-  const whatsappLink = "https://wa.me/94771234567?text=Hello%20Lanka%20Physio%20Clinic%2C%20I%20would%20like%20to%20book%20a%20physiotherapy%20home%20visit.";
+  const [formData, setFormData] = useState({
+    name: '',
+    location: '',
+    condition: '',
+    time: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleWhatsAppChat = (e) => {
+    e.preventDefault();
+    const message = `Hello Lanka Physio Clinic, I would like to book a physiotherapy home visit.
+    
+1. Patient Name & Age: ${formData.name}
+2. Primary Location (Address): ${formData.location}
+3. Condition / Symptoms: ${formData.condition}
+4. Preferred Date & Time: ${formData.time}`;
+    
+    const whatsappLink = `https://wa.me/94712231564?text=${encodeURIComponent(message)}`;
+    window.open(whatsappLink, '_blank');
+    
+    setFormData({
+      name: '',
+      location: '',
+      condition: '',
+      time: ''
+    });
+  };
 
   return (
     <section id="contact" className="contact-section section">
@@ -27,41 +57,36 @@ export default function ContactSection() {
               To help us assign the perfect therapist for your specific needs, please provide the following details when you start your chat:
             </p>
 
-            <ul className="details-list">
-              <li>
-                <div className="bullet-point">1</div>
-                <div>
-                  <strong>Patient Name & Age</strong>
-                  <p>Helps us understand basic patient demographics.</p>
-                </div>
-              </li>
-              <li>
-                <div className="bullet-point">2</div>
-                <div>
-                  <strong>Primary Location (Address)</strong>
-                  <p>To verify our therapist covers your neighborhood.</p>
-                </div>
-              </li>
-              <li>
-                <div className="bullet-point">3</div>
-                <div>
-                  <strong>Condition / Symptoms</strong>
-                  <p>E.g., lower back pain, recovery from knee surgery, stroke rehab.</p>
-                </div>
-              </li>
-              <li>
-                <div className="bullet-point">4</div>
-                <div>
-                  <strong>Preferred Date & Time</strong>
-                  <p>We work around your schedule, mornings or evenings.</p>
-                </div>
-              </li>
-            </ul>
-
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg btn-block pulse-animation">
-              <Send size={18} />
-              <span>Start WhatsApp Chat</span>
-            </a>
+            <form onSubmit={handleWhatsAppChat} className="booking-form">
+              <div className="form-group">
+                <label>1. Patient Name & Age</label>
+                <p className="form-help">Helps us understand basic patient demographics.</p>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required className="form-input" />
+              </div>
+              
+              <div className="form-group">
+                <label>2. Primary Location (Address)</label>
+                <p className="form-help">To verify our therapist covers your neighborhood.</p>
+                <input type="text" name="location" value={formData.location} onChange={handleChange} required className="form-input" />
+              </div>
+              
+              <div className="form-group">
+                <label>3. Condition / Symptoms</label>
+                <p className="form-help">E.g., lower back pain, recovery from knee surgery, stroke rehab.</p>
+                <input type="text" name="condition" value={formData.condition} onChange={handleChange} required className="form-input" />
+              </div>
+              
+              <div className="form-group">
+                <label>4. Preferred Date & Time</label>
+                <p className="form-help">We work around your schedule, mornings or evenings.</p>
+                <input type="text" name="time" value={formData.time} onChange={handleChange} required className="form-input" />
+              </div>
+              
+              <button type="submit" className="btn btn-whatsapp btn-lg btn-block pulse-animation" style={{marginTop: '24px', border: 'none', cursor: 'pointer', fontFamily: 'inherit'}}>
+                <Send size={18} />
+                <span>Start WhatsApp Chat</span>
+              </button>
+            </form>
           </div>
 
           {/* Right Column: Contact info details */}
@@ -70,7 +95,10 @@ export default function ContactSection() {
               <MapPin className="info-icon" />
               <div>
                 <h4>Coverage Area</h4>
-                <p>Colombo & suburbs (Dehiwala, Mount Lavinia, Rajagiriya, Battaramulla, Nugegoda, Kotte, and surrounding areas).</p>
+                <p>Our services are available island-wide.</p>
+                <div className="coverage-map-wrapper">
+                  <img src={mapImage} alt="Coverage Map" className="coverage-map highlight-green-animation" />
+                </div>
               </div>
             </div>
 
@@ -86,7 +114,7 @@ export default function ContactSection() {
               <Phone className="info-icon" />
               <div>
                 <h4>Phone Support</h4>
-                <p>+94 77 123 4567</p>
+                <p>0712231564</p>
               </div>
             </div>
 
@@ -140,47 +168,47 @@ export default function ContactSection() {
           line-height: 1.6;
         }
 
-        .details-list {
-          list-style: none;
+        .booking-form {
           display: flex;
           flex-direction: column;
-          gap: 20px;
-          margin-bottom: 36px;
-        }
-
-        .details-list li {
-          display: flex;
           gap: 16px;
-          align-items: flex-start;
+          margin-bottom: 24px;
         }
 
-        .bullet-point {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background: rgba(0, 242, 254, 0.1);
-          border: 1px solid rgba(0, 242, 254, 0.3);
-          color: var(--accent-cyan);
-          font-family: var(--font-heading);
-          font-weight: 700;
-          font-size: 0.9rem;
+        .form-group {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          margin-top: 2px;
+          flex-direction: column;
+          gap: 4px;
         }
 
-        .details-list strong {
+        .form-group label {
           color: var(--text-primary);
           font-size: 0.95rem;
-          display: block;
-          margin-bottom: 2px;
+          font-weight: 600;
         }
 
-        .details-list p {
+        .form-help {
           font-size: 0.85rem;
           color: var(--text-muted);
+          margin-bottom: 4px;
+        }
+
+        .form-input {
+          padding: 12px 16px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: var(--text-primary);
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+          font-family: inherit;
+        }
+
+        .form-input:focus {
+          outline: none;
+          border-color: var(--accent-cyan);
+          background: rgba(255, 255, 255, 0.05);
+          box-shadow: 0 0 0 2px rgba(0, 242, 254, 0.2);
         }
 
         .btn-block {

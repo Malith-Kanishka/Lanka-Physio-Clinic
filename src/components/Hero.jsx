@@ -1,9 +1,6 @@
 import React from 'react';
 import { Phone, ArrowRight, ShieldCheck, Clock, Award } from 'lucide-react';
-
 export default function Hero() {
-  const whatsappLink = "https://wa.me/94771234567?text=Hello%20Lanka%20Physio%20Clinic%2C%20I%20would%20like%20to%20book%20a%20physiotherapy%20home%20visit.";
-
   return (
     <section id="home" className="hero-section">
       <div className="container hero-container">
@@ -18,7 +15,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions fade-in-delay-3">
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+            <a href="#contact" className="btn btn-primary btn-lg">
               <Phone size={18} />
               <span>Book Home Visit</span>
             </a>

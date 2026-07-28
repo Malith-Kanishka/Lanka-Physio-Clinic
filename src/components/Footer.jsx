@@ -1,9 +1,6 @@
 import React from 'react';
 import { Activity, Phone, Mail, ArrowUp } from 'lucide-react';
-
 export default function Footer() {
-  const whatsappLink = "https://wa.me/94771234567?text=Hello%20Lanka%20Physio%20Clinic%2C%20I%20would%20like%20to%20book%20a%20physiotherapy%20home%20visit.";
-
   const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -15,7 +12,7 @@ export default function Footer() {
         <div className="footer-brand-col">
           <a href="#home" className="logo footer-logo" onClick={scrollToTop}>
             <Activity className="logo-icon" />
-            <span className="logo-text">LANKA <span className="text-gradient">PHYSIO</span></span>
+            <span className="logo-text">LANKA <span className="text-gradient">PHYSIO CLINIC</span></span>
           </a>
           <p className="footer-tagline">
             Professional physical rehabilitation and clinical recovery programs delivered in the security and comfort of your own home.
@@ -36,12 +33,12 @@ export default function Footer() {
           <h4>Connect Directly</h4>
           <ul className="footer-links">
             <li>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="footer-whatsapp-link">
+              <a href="#contact" className="footer-whatsapp-link">
                 <span className="whatsapp-dot"></span>
                 Book via WhatsApp
               </a>
             </li>
-            <li><a href="tel:+94771234567">+94 77 123 4567</a></li>
+            <li><a href="tel:0712231564">0712231564</a></li>
             <li><a href="mailto:info@lankaphysioclinic.com">info@lankaphysioclinic.com</a></li>
           </ul>
         </div>
