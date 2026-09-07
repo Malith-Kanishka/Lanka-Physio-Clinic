@@ -95,7 +95,7 @@ export default function ContactSection() {
               <MapPin className="info-icon" />
               <div>
                 <h4>Coverage Area</h4>
-                <p>Our services are available island-wide.</p>
+                <p>Home visits available in <strong>Kandy, Peradeniya, Katugastota, Kundasale, Digana, Gampola, Matale, Nuwara Eliya</strong> & island-wide Sri Lanka.</p>
                 <div className="coverage-map-wrapper">
                   <img src={mapImage} alt="Coverage Map" className="coverage-map highlight-green-animation" />
                 </div>
