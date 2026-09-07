@@ -94,7 +94,7 @@ export default function Specializations() {
         <div className="patients-row">
           <h3 className="sub-section-title">Physiotherapy for All Kinds of Patients</h3>
           <p className="patients-intro">
-            We adapt our treatment protocols to match the exact physiological and age requirements of our diverse clientele across Kandy and Sri Lanka.
+            We adapt our treatment protocols to match the exact physiological and age requirements of our diverse clientele.
           </p>
           <div className="patients-grid">
             {patientTypes.map((pt, index) => (
@@ -103,40 +103,6 @@ export default function Specializations() {
                 <p className="patient-card-desc">{pt.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Coverage Areas & Condition Tags for Local SEO */}
-        <div className="seo-tags-row glass-panel" style={{ padding: '32px', marginBottom: '80px', borderRadius: '16px' }}>
-          <h3 className="sub-section-title" style={{ fontSize: '1.4rem', marginBottom: '16px' }}>
-            Primary Home Visit Service Coverage & Specializations
-          </h3>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '20px', lineHeight: '1.6' }}>
-            Lanka Physio Clinic provides registered home visit physiotherapy, rehabilitation, and pain management across <strong>Kandy, Peradeniya, Katugastota, Kundasale, Digana, Gampola, Matale, Nuwara Eliya</strong>, and island-wide Sri Lanka.
-          </p>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div>
-              <strong style={{ color: 'var(--accent-cyan)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>📍 Key Service Locations:</strong>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>
-                {['Physiotherapy in Kandy', 'Peradeniya', 'Katugastota', 'Kundasale', 'Digana', 'Gampola', 'Matale', 'Nuwara Eliya', 'Colombo & Island-Wide'].map((loc, i) => (
-                  <span key={i} style={{ background: 'rgba(0, 242, 254, 0.08)', border: '1px solid rgba(0, 242, 254, 0.2)', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', color: 'var(--text-primary)' }}>
-                    {loc}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <strong style={{ color: 'var(--accent-cyan)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>🩺 Conditions & Treatments:</strong>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>
-                {['Back Pain & Sciatica', 'Neck & Shoulder Pain', 'Knee Pain & Osteoarthritis', 'Sports Injury & ACL Rehab', 'Stroke Rehabilitation', 'Parkinson’s Therapy', 'Post-Surgery Recovery', 'Geriatric & Fall Prevention', 'Balance & Exercise Therapy'].map((cond, i) => (
-                  <span key={i} style={{ background: 'rgba(79, 172, 254, 0.08)', border: '1px solid rgba(79, 172, 254, 0.2)', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', color: 'var(--text-primary)' }}>
-                    {cond}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
