@@ -16,18 +16,17 @@ export default function Navbar() {
   return (
     <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        <a href="#home" className="logo">
-          <Activity className="logo-icon" />
-          <span className="logo-text">LANKA <span className="text-gradient">PHYSIO CLINIC</span></span>
+        <a href="#home" className="logo" aria-label="Lanka Physio Clinic Home">
+          <img src="/logo-transparent.png" alt="Lanka Physio Clinic Logo" className="brand-logo-img" />
         </a>
 
         {/* Desktop Menu */}
         <nav className="desktop-nav">
-          <a href="#home" className="nav-link">Home</a>
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#specializations" className="nav-link">Home Visits</a>
-          <a href="#contact" className="nav-link">Contact</a>
-          <a href="#contact" className="btn btn-whatsapp nav-cta">
+          <a href="#home" className="nav-link" aria-label="Go to Home section">Home</a>
+          <a href="#services" className="nav-link" aria-label="View Physiotherapy Services">Services</a>
+          <a href="#specializations" className="nav-link" aria-label="Learn about Home Visits">Home Visits</a>
+          <a href="#contact" className="nav-link" aria-label="Contact Lanka Physio Clinic">Contact</a>
+          <a href="#contact" className="btn btn-whatsapp nav-cta" aria-label="Book Home Visit via WhatsApp">
             <Phone size={16} />
             <span>Book Home Visit</span>
           </a>
@@ -90,23 +89,26 @@ export default function Navbar() {
         .logo {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           text-decoration: none;
           color: var(--text-primary);
         }
 
-        .logo-icon {
-          color: var(--accent-cyan);
-          width: 28px;
-          height: 28px;
-          filter: drop-shadow(0 0 8px var(--accent-cyan-glow));
+        .brand-logo-img {
+          height: 60px;
+          width: auto;
+          max-width: 260px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.45));
+          transition: all var(--transition-fast);
         }
 
-        .logo-text {
-          font-family: var(--font-heading);
-          font-weight: 800;
-          font-size: 1.25rem;
-          letter-spacing: 0.05em;
+        .navbar-header.scrolled .brand-logo-img {
+          height: 48px;
+        }
+
+        .logo:hover .brand-logo-img {
+          transform: scale(1.05);
         }
 
         .desktop-nav {

@@ -10,9 +10,8 @@ export default function Footer() {
     <footer className="clinic-footer">
       <div className="container footer-container">
         <div className="footer-brand-col">
-          <a href="#home" className="logo footer-logo" onClick={scrollToTop}>
-            <Activity className="logo-icon" />
-            <span className="logo-text">LANKA <span className="text-gradient">PHYSIO CLINIC</span></span>
+          <a href="#home" className="logo footer-logo" onClick={scrollToTop} aria-label="Lanka Physio Clinic Home">
+            <img src="/logo-transparent.png" alt="Lanka Physio Clinic Logo" className="brand-logo-img" />
           </a>
           <p className="footer-tagline">
             Professional physical rehabilitation and clinical recovery programs delivered in the security and comfort of your own home.
@@ -77,6 +76,18 @@ export default function Footer() {
 
         .footer-logo {
           margin-bottom: 18px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          text-decoration: none;
+        }
+
+        .footer-logo .brand-logo-img {
+          height: 65px;
+          width: auto;
+          max-width: 280px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.45));
         }
 
         .footer-tagline {

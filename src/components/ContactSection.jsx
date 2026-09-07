@@ -59,30 +59,30 @@ export default function ContactSection() {
 
             <form onSubmit={handleWhatsAppChat} className="booking-form">
               <div className="form-group">
-                <label>1. Patient Name & Age</label>
+                <label htmlFor="patient-name">1. Patient Name & Age</label>
                 <p className="form-help">Helps us understand basic patient demographics.</p>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required className="form-input" />
+                <input id="patient-name" type="text" name="name" value={formData.name} onChange={handleChange} required className="form-input" aria-label="Patient Name and Age" />
               </div>
               
               <div className="form-group">
-                <label>2. Primary Location (Address)</label>
+                <label htmlFor="patient-location">2. Primary Location (Address)</label>
                 <p className="form-help">To verify our therapist covers your neighborhood.</p>
-                <input type="text" name="location" value={formData.location} onChange={handleChange} required className="form-input" />
+                <input id="patient-location" type="text" name="location" value={formData.location} onChange={handleChange} required className="form-input" aria-label="Primary Location Address" />
               </div>
               
               <div className="form-group">
-                <label>3. Condition / Symptoms</label>
+                <label htmlFor="patient-condition">3. Condition / Symptoms</label>
                 <p className="form-help">E.g., lower back pain, recovery from knee surgery, stroke rehab.</p>
-                <input type="text" name="condition" value={formData.condition} onChange={handleChange} required className="form-input" />
+                <input id="patient-condition" type="text" name="condition" value={formData.condition} onChange={handleChange} required className="form-input" aria-label="Condition or Symptoms" />
               </div>
               
               <div className="form-group">
-                <label>4. Preferred Date & Time</label>
+                <label htmlFor="preferred-time">4. Preferred Date & Time</label>
                 <p className="form-help">We work around your schedule, mornings or evenings.</p>
-                <input type="text" name="time" value={formData.time} onChange={handleChange} required className="form-input" />
+                <input id="preferred-time" type="text" name="time" value={formData.time} onChange={handleChange} required className="form-input" aria-label="Preferred Date and Time" />
               </div>
               
-              <button type="submit" className="btn btn-whatsapp btn-lg btn-block pulse-animation" style={{marginTop: '24px', border: 'none', cursor: 'pointer', fontFamily: 'inherit'}}>
+              <button type="submit" className="btn btn-whatsapp btn-lg btn-block pulse-animation" aria-label="Start WhatsApp Chat for Booking" style={{marginTop: '24px', border: 'none', cursor: 'pointer', fontFamily: 'inherit'}}>
                 <Send size={18} />
                 <span>Start WhatsApp Chat</span>
               </button>
